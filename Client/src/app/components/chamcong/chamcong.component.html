@@ -1,0 +1,68 @@
+<div class="flex border-b-[1px] flex-8 h-[45px]   font-medium text-lg flex-col pb-2">
+  <div class="flex gap-3 items-center justify-between">
+    <span class=" cursor-pointer border-r-[1px] px-4 py-2  " (click)="navigate('home/chamcong')">
+      lịch sử chấm công
+    </span>
+
+    <span class="flex items-center gap-4" *ngIf=" formatDate=== 'Đã Chấm Công'; else noActive">
+
+      <i class="material-icons text-green-800  ">check_circle</i>
+      <span>{{formatDate}}</span>
+    </span>
+    <ng-template #noActive>
+      <span class="flex items-center gap-4">
+        <i class="material-icons  text-red-600">check_circle</i>
+        <span>{{formatDate}}</span>
+      </span>
+    </ng-template>
+    <div class="flex items-center px-4  ">
+
+      <span>{{dataLocalStorage.data.Name}}</span>
+
+    </div>
+  </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
+  <!-- <ng-container matColumnDef="STT">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let user"> {{user.id}}</td>
+  </ng-container> -->
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Nhân viên">
+    <th mat-header-cell *matHeaderCellDef> Nhân viên </th>
+    <td mat-cell *matCellDef="let user"> {{user.Name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Mã nhân viên">
+    <th mat-header-cell *matHeaderCellDef> Mã nhân viên </th>
+    <td mat-cell *matCellDef="let user"> {{user.MNV}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Thời gian">
+    <th mat-header-cell *matHeaderCellDef> Thời gian </th>
+    <td mat-cell *matCellDef="let user"> {{user.time}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Ngày">
+    <th mat-header-cell *matHeaderCellDef> Ngày </th>
+    <td mat-cell *matCellDef="let user"> {{user.date}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Trạng Thái">
+    <th mat-header-cell *matHeaderCellDef> Trạng Thái </th>
+    <td mat-cell *matCellDef="let user"> {{user.Status}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<div class="example-button-row flex items-center w-full justify-center mt-7">
+  <button mat-raised-button color="primary" (click)="chamcong()">Chấm công</button>
+</div>
+<mat-paginator [pageSizeOptions]="[1, 15, 30]"  aria-label="elements">
+>
+</mat-paginator>

@@ -1,0 +1,71 @@
+<div class="sm:container mx-auto flex gap-2 flex-col text-[#333]  ">
+    <div class=" font-medium text-xl border-b-[1px] w-full  px-4 py-2">Hồ sơ nhân sự</div>
+    <div class=" flex justify-center py-4 px-5 gap-4">
+        <div class=" flex flex-3 flex-col items-center gap-3 ">
+            <img src="../../../assets/img/logo.png" class="w-[200px] object-contain rounded-full" alt="logo">
+            <!-- <span>{{DataOneUser.Name}}</span> -->
+            <div class="w-70">
+                <mat-form-field class="w-full  ">
+                    <mat-label *ngIf="DataOneUser">{{DataOneUser.Name}}</mat-label>
+                    <input name="Name" [(ngModel)]="dataUpdate.Name" value="dataUpdate.Name" placeholder="{{DataOneUser.Name}}" matInput>
+                </mat-form-field>
+                <mat-form-field class="w-full ">
+                    <mat-label>{{selectDate}}</mat-label>
+                    <input matInput [(ngModel)]="dataUpdate.Ngay_sinh" placeholder="{{selectDate}}" [matDatepicker]="picker">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="flex-7  px-4  items-center">
+            <div class="h-8"></div>
+            <h3>Thông tin cá nhân</h3>
+            <div class="flex gap-6 w-full ">
+                <div class=" flex flex-col flex-1">
+                    <mat-form-field (mousemove)="changeText = true" (mouseout)="changeText = false">
+                        <mat-label *ngIf="changeText">Mã nhân viên </mat-label>
+                        <mat-label *ngIf="!changeText">{{DataOneUser.MNV}}</mat-label>
+                        <input  placeholder="{{DataOneUser.MNV}}" matInput>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Giới tính</mat-label>
+                        <select matNativeControl required [(ngModel)]="dataUpdate.Gioi_tinh">
+                            <option  value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                        </select>
+                    </mat-form-field>
+
+                    <!-- <ng-template #nam>
+                        <mat-form-field>
+                            <mat-label>Giới tính</mat-label>
+                            <select matNativeControl required>
+                                <option [(ngModel)]="dataUpdate.Gioi_tinh" value="1">Nam</option>
+                                <option [(ngModel)]="dataUpdate.Gioi_tinh" value="0">Nữ</option>
+                              </select>
+                        </mat-form-field>
+                    </ng-template> -->
+                </div>
+                <!-- btn -->
+
+                <div class="flex-1 flex-col flex ">
+                    <mat-form-field>
+                        <mat-label>Địa chỉ</mat-label>
+                        <input [(ngModel)]="dataUpdate.Dia_chi" name="Dia_chi" value="dataUpdate.Dia_chi"
+                            placeholder="{{DataOneUser.Dia_chi}}" matInput>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Chức Vụ</mat-label>
+                        <input value="{{DataOneUser.Chucvu.Value}}" placeholder="{{DataOneUser.Chucvu.Value}}" matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="example-button-row flex items-center w-full justify-center mt-7">
+                <button mat-raised-button (click)="capnhat()" color="primary">Cập nhật</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

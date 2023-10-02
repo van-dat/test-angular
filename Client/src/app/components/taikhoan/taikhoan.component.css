@@ -1,0 +1,4 @@
+.my-table-class .mat-row:hover {
+    background-color: #d31515; /* Change the background color on hover */
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+  }

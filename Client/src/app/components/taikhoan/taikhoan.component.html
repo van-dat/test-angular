@@ -1,0 +1,34 @@
+<div class="flex gap-3 items-center justify-between">
+  <span class="cursor-pointer border-r-2 px-4 py-2">
+    Quản lý tài khoản
+  </span>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
+  <!-- <ng-container matColumnDef="STT">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let user"> {{user.id}}</td>
+  </ng-container> -->
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Tên nhân viên">
+    <th mat-header-cell *matHeaderCellDef> Nhân viên </th>
+    <td mat-cell *matCellDef="let user"> {{user.Name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Mã nhân viên">
+    <th mat-header-cell *matHeaderCellDef> Mã nhân viên </th>
+    <td mat-cell *matCellDef="let user"> {{user.MNV}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Chức vụ">
+    <th mat-header-cell *matHeaderCellDef> Chức vụ </th>
+    <td mat-cell *matCellDef="let user"> {{user.Chucvu.Value}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row (click)="onRowClick(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<mat-paginator [pageSizeOptions]="[1, 15, 30]" length="10" aria-label="elements">
+</mat-paginator>

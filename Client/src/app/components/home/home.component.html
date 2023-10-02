@@ -1,0 +1,23 @@
+<div class="flex w-full">
+    <div class=" flex-2 content h-screen  ">
+        <ul class="navbar-nav flex  text-white font-medium border-b-[1px] text-lg " *ngFor="let i of pathMenu "
+            id="accordionSidebar">
+            <li class="nav-item active flex items-center px-4 gap-2 ">
+                <i class="material-icons">{{i.icon}}</i>
+                <a class="nav-link" routerLink='{{i.path}}'>
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>{{i.text}}</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+  
+        <div class="flex flex-8 h-[45px]   font-medium text-lg flex-col pb-2">
+            <div>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    
+</div>
